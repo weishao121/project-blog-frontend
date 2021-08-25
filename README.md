@@ -1,30 +1,13 @@
-# client
-
-> Client-side of project-blog
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# Project-blog-frontend
+This is the front-end portion of project blog. This repo is inspired by the project from my work at OpenAtom Foundation.<br><br>
+The front-end is written in the Vue framework, vuetify for materials and vuex for state management. The rich-editor used is the vuejs-medium-editor<br>
+# Installation
+```javascript
+npm install // to install all necessary dependencies
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# Usage
+```javascript
+npm run start // to start the client on local port 8081
+```
+# License
+[MIT](https://choosealicense.com/licenses/mit/)
