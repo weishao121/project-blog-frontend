@@ -1,6 +1,48 @@
 <template>
   <v-container id='body' class='mt-15'>
     <div v-if='blog != null'>
+      <div v-if='this.$store.state.user.email === blog.author'>
+        <v-btn color='primary' @click='to({ name: "editBlog", params: { blogId: blog.id }})'>编辑博客</v-btn>
+        <v-dialog
+          v-model="deleteDialog"
+          persistent
+          max-width="290"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              color="error darken-1"
+              dark
+              v-bind="attrs"
+              v-on="on"
+            >
+              删除博客
+            </v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="text-h5">
+              确认删除博客?
+            </v-card-title>
+            <v-card-text>删除博客后，不能逆转</v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                color="grey darken-1"
+                text
+                @click="deleteDialog = false"
+              >
+                返回
+              </v-btn>
+              <v-btn
+                color="red darken-1"
+                text
+                @click="deleteBlog"
+              >
+                确认
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
       <div>{{blog.title}}</div>
       <div>{{blog.description}}</div>
       <div>{{blog.author}} - {{blog.createdAt}}</div>
@@ -14,7 +56,8 @@ import MediumEditor from 'medium-editor'
 export default {
   data() {
     return {
-      blog: null
+      blog: null,
+      deleteDialog: false
     }
   },
   async mounted() {
@@ -27,6 +70,25 @@ export default {
       })
       mEditor.setContent(this.blog.content)
     })
+  },
+  methods: {
+    to(route) {
+      this.$router.push(route)
+    },
+    async deleteBlog() {
+      // alert('Deleted! ! !')
+      try {
+        await BlogServices.delete(this.blog)
+        this.$router.push({
+          name: 'userDetail',
+          params: {
+            userId: this.$store.state.user.id
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
 </script>

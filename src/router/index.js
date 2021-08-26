@@ -7,11 +7,12 @@ import ViewBlog from '@/components/ViewBlog'
 import WriteBlog from '@/components/WriteBlog'
 import UserDetail from '@/components/UserDetail'
 import CateBlog from '@/components/CateBlog'
+import EditBlog from '@/components/EditBlog'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'history', // to remove the # sign
   routes: [
     {
       path: '/',
@@ -47,6 +48,11 @@ export default new Router({
       path: '/category/:category',
       name: 'cateBlog',
       component: CateBlog
+    },
+    {
+      path: '/blog/edit/:blogId',
+      name: 'editBlog',
+      component: EditBlog
     }
   ]
 })

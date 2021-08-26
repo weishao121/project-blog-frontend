@@ -15,5 +15,11 @@ export default {
   },
   listCate(category) { // List blogs of a category
     return Api().get(`category/${category}`)
+  },
+  edit(blog) { // Edit blog
+    return Api().put(`blog/${blog.id}`, blog)
+  },
+  delete(blog) { // Delete blog
+    return Api().delete(`blog/${blog.id}`, blog)
   }
 }
