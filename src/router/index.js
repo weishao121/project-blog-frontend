@@ -8,6 +8,7 @@ import WriteBlog from '@/components/WriteBlog'
 import UserDetail from '@/components/UserDetail'
 import CateBlog from '@/components/CateBlog'
 import EditBlog from '@/components/EditBlog'
+import EditUser from '@/components/EditUser'
 
 Vue.use(Router)
 
@@ -30,6 +31,16 @@ export default new Router({
       component: Login
     },
     {
+      path: '/user/:userId',
+      name: 'userDetail',
+      component: UserDetail
+    },
+    {
+      path: '/user/edit/:userId',
+      name: 'editUserDetail',
+      component: EditUser
+    },
+    {
       path: '/blog/:blogId',
       name: 'viewBlog',
       component: ViewBlog
@@ -38,11 +49,6 @@ export default new Router({
       path: '/blog/new',
       name: 'writeBlog',
       component: WriteBlog
-    },
-    {
-      path: '/user/:userId',
-      name: 'userDetail',
-      component: UserDetail
     },
     {
       path: '/category/:category',

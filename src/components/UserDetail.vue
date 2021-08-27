@@ -2,7 +2,7 @@
   <v-container class='mt-15'>
     <h1>个人中心</h1>
     <div>{{userDetail.email}}</div>
-    <v-btn v-if='this.$store.state.user !== null && this.$store.state.user.email === this.userDetail.email'>修改信息</v-btn>
+    <v-btn v-if='this.$store.state.user !== null && this.$store.state.user.email === this.userDetail.email' @click='to({ name: "editUserDetail", params: { userId: userDetail.id }})'>修改信息</v-btn>
     <h1>个人博客</h1>
     <div class='blogs'>
       <v-card elevation='3' v-for='blog in userBlogs' :key='blog.id' @click='to({ name: "viewBlog", params: { blogId: blog.id }})' class='content-card mb-3'>
@@ -43,6 +43,13 @@ export default {
   methods: {
     to(route) {
       this.$router.push(route)
+    },
+    async editDetail() {
+      try {
+        await UserServices.edit(this.userDetail)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
