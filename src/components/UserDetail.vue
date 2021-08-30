@@ -1,6 +1,7 @@
 <template>
   <v-container class='mt-15'>
     <h1>个人中心</h1>
+    <div>{{userDetail.username}}</div>
     <div>{{userDetail.email}}</div>
     <v-btn v-if='this.$store.state.user !== null && this.$store.state.user.email === this.userDetail.email' @click='to({ name: "editUserDetail", params: { userId: userDetail.id }})'>修改信息</v-btn>
     <h1>个人博客</h1>

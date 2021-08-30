@@ -1,8 +1,8 @@
 <template>
   <v-container class='mt-15'>
     <h1>登入</h1>
-    <v-text-field label='账号名称' v-model='email'></v-text-field>
-    <v-text-field label='账号密码' type='password' v-model='password'></v-text-field>
+    <v-text-field label='用户名' v-model='username'></v-text-field>
+    <v-text-field label='密码' type='password' v-model='password'></v-text-field>
     <v-btn @click="login">点击登入</v-btn>
   </v-container>
 </template>
@@ -11,14 +11,14 @@ import Auth from '@/services/auth'
 export default {
   data() {
     return {
-      email: '',
+      username: '',
       password: ''
     }
   },
   methods: {
     async login() {
       const response = await Auth.login({
-        email: this.email,
+        username: this.username,
         password: this.password
       })
       this.$store.dispatch('setToken', response.data.token)

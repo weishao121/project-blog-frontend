@@ -27,7 +27,7 @@
           <template v-slot:activator="{ on }">
             <v-btn id='topbar-icon' icon x-large v-on="on">
               <v-avatar color="brown" size="48">
-                <span class="white--text text-h5">{{$store.state.user.email}}</span>
+                <span class="white--text text-h5">{{$store.state.user.username}}</span>
               </v-avatar>
             </v-btn>
           </template>
@@ -35,10 +35,10 @@
             <v-list-item-content class="justify-center">
               <div class="mx-auto text-center">
                 <v-avatar color="brown">
-                  <span class="white--text text-h5">{{$store.state.user.email}}</span>
+                  <span class="white--text text-h5">{{$store.state.user.username}}</span>
                 </v-avatar>
-                <h3>{{$store.state.user.email}}</h3>
-                <p class="text-caption mt-1">{{$store.state.user.email}}</p>
+                <h3>{{$store.state.user.username}}</h3>
+                <p class="text-caption mt-1">{{$store.state.user.usernamel}}</p>
                 <v-divider class="my-3"></v-divider>
                 <v-btn depressed rounded text @click='toRest({name: "writeBlog"})'>开始写作</v-btn>
                 <v-divider class="my-3"></v-divider>

@@ -90,7 +90,7 @@ export default {
     async publish() {
       this.modal = false
       await Blog.post({
-        author: this.$store.state.user.email,
+        author: this.$store.state.user.username,
         title: this.blog.title,
         description: this.blog.description,
         mainTag: this.blog.mainTag,

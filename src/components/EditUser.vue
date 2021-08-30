@@ -6,7 +6,13 @@
     >确认修改</v-btn>
     <div v-if='user != null'>
       <v-text-field
-        label='Title'
+        label='用户名(不能修改)'
+        required
+        disabled
+        v-model='user.username'
+      ></v-text-field>
+      <v-text-field
+        label='电邮'
         required
         v-model='user.email'
       ></v-text-field>
