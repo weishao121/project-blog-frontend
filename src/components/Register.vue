@@ -1,10 +1,13 @@
 <template>
   <v-container class='mt-15'>
-    <h1>注册</h1>
-    <v-text-field label='用户名' v-model='username'></v-text-field>
-    <v-text-field label='电邮' v-model='email'></v-text-field>
-    <v-text-field label='密码' type='password' v-model='password'></v-text-field>
-    <v-btn @click='register'>点击注册</v-btn>
+    <form
+      autocomplete="off">
+      <h1>注册</h1>
+      <v-text-field label='用户名' v-model='username'></v-text-field>
+      <v-text-field label='电邮' v-model='email'></v-text-field>
+      <v-text-field label='密码' type='password' v-model='password'></v-text-field>
+      <v-btn @click='register'>点击注册</v-btn>
+    </form>
   </v-container>
 </template>
 <script>

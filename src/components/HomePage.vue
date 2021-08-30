@@ -5,7 +5,7 @@
       <div class='trending-content'>
         <v-card v-for='blog in trending' :key='blog.id'>
           <v-avatar><v-icon>mdi-account-circle</v-icon></v-avatar> {{blog.author}}
-          <div @click='to({ name: "viewBlog", params: { blogId: blog.id }})'>
+          <div class='nav-to-blog' @click='to({ name: "viewBlog", params: { blogId: blog.id }})'>
             <v-card-title class='ml-5 mb-5'>{{blog.title}}</v-card-title>
             <v-card-subtitle class='ml-3'>{{blog.createdAt}} - {{blog.mainTag}}</v-card-subtitle>
           </div>
@@ -17,7 +17,7 @@
         <v-card elevation='3' v-for='blog in blogs' :key='blog.id' class='content-card mb-3'>
           <div class='content-card-left'>
             <v-avatar><v-icon>mdi-account-circle</v-icon></v-avatar> {{blog.author}}
-            <div @click='to({ name: "viewBlog", params: { blogId: blog.id }})'>
+            <div class='nav-to-blog' @click='to({ name: "viewBlog", params: { blogId: blog.id }})'>
               <v-card-title class='blog-title ml-5'>{{blog.title}}</v-card-title>
               <v-card-subtitle class='ml-5'>{{blog.description}}</v-card-subtitle>
               <v-card-subtitle class='ml-5'>{{blog.createdAt}} - {{blog.mainTag}}</v-card-subtitle>
@@ -93,10 +93,8 @@ export default {
 }
 </script>
 <style scoped>
-.trending {
-  /* background-color: red; */
-  /* min-height: 200px; */
-  /* margin-top: 55px; */
+.nav-to-blog:hover {
+  cursor: pointer;
 }
 .trending-content {
   display: grid;
