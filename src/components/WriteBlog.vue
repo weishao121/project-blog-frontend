@@ -28,6 +28,7 @@
                   <v-text-field label='标题' v-model='blog.title'></v-text-field>
                   <v-text-field label='简介' v-model='blog.description'></v-text-field>
                   <v-text-field label='标签' v-model='blog.mainTag'></v-text-field>
+                  <div class='err' v-html='error'></div><br>
                   <v-row>
                     <v-spacer></v-spacer>
                     <v-card-actions>
@@ -64,6 +65,7 @@ export default {
   data() {
     return {
       modal: false,
+      error: null,
       blog: [
         {
           author: '',
@@ -85,7 +87,7 @@ export default {
   },
   methods: {
     async publish() {
-      this.modal = false
+      // this.modal = false
       try {
         await Blog.post({
           author: this.$store.state.user.username,
@@ -96,15 +98,17 @@ export default {
         })
         this.$router.push({ 'name': 'HomePage' })
       } catch (error) {
-        console.log(error)
+        this.error = error.response.data.error
       }
     }
   }
 }
 </script>
 <style scoped>
-
 #public-card {
   padding: 50px;
+}
+.err {
+  color: red;
 }
 </style>
