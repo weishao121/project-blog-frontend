@@ -1,8 +1,8 @@
 <template>
   <v-container id='body' class='mt-15'>
     <div v-if='blog != null'>
-      <div v-if='this.$store.state.user.email === blog.author'>
-        <v-btn color='primary' @click='to({ name: "editBlog", params: { blogId: blog.id }})'>编辑博客</v-btn>
+      <div v-if='this.$store.state.user.username === blog.author'>
+        <v-btn color='primary' :to='{ name: "editBlog", params: { blogId: blog.id }}'>编辑博客</v-btn>
         <v-dialog
           v-model="deleteDialog"
           persistent
@@ -72,9 +72,6 @@ export default {
     })
   },
   methods: {
-    to(route) {
-      this.$router.push(route)
-    },
     async deleteBlog() {
       // alert('Deleted! ! !')
       try {

@@ -29,7 +29,7 @@ export default {
       })
       this.$store.dispatch('setToken', response.data.token)
       this.$store.dispatch('setUser', response.data.user)
-      this.$router.push('/')
+      this.$router.push({ 'name': 'HomePage' })
       // console.log(response.data)
     }
   }

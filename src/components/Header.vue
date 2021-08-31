@@ -8,18 +8,18 @@
       <v-toolbar-title id='topbar-title'><a @click='toMain("/")'>开源博客</a></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items id='topbar-item' v-if='!$store.state.isUserLoggedIn'>
-        <v-btn @click='toRest("register")' icon class='topbar-links'>
+        <v-btn :to='{ name: "register" }' icon class='topbar-links'>
           <v-icon class='mr-2'>mdi-account-plus</v-icon>
           注册
         </v-btn>
-        <v-btn @click='toRest("login")' icon class='topbar-links'>
+        <v-btn :to='{ name: "login" }' icon class='topbar-links'>
           <v-icon class='mr-2'>mdi-login</v-icon>
           登入
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items v-else>
         <!-- After successful login -->
-        <v-btn @click='toRest({name: "writeBlog"})' icon color='success' class='topbar-links'>
+        <v-btn :to='{ name: "writeBlog" }' icon color='success' class='topbar-links'>
           <v-icon class='mr-2'>mdi-typewriter</v-icon>
           开始写作
         </v-btn>
@@ -40,9 +40,9 @@
                 <h3>{{$store.state.user.username}}</h3>
                 <p class="text-caption mt-1">{{$store.state.user.usernamel}}</p>
                 <v-divider class="my-3"></v-divider>
-                <v-btn depressed rounded text @click='toRest({name: "writeBlog"})'>开始写作</v-btn>
+                <v-btn depressed rounded text :to='{name: "writeBlog"}'>开始写作</v-btn>
                 <v-divider class="my-3"></v-divider>
-                <v-btn depressed rounded text @click='toRest({ name: "userDetail", params: { userId: $store.state.user.id }})'>个人中心</v-btn>
+                <v-btn depressed rounded text :to='{ name: "userDetail", params: { userId: $store.state.user.id }}'>个人中心</v-btn>
                 <v-divider class="my-3"></v-divider>
                 <v-btn depressed rounded text @click='logout'>登出</v-btn>
               </div>
@@ -59,7 +59,7 @@ export default {
     toMain(route) {
       if (this.$route.name === route.name) return
       else if (this.$route.name === 'HomePage' && route === '/') return
-      this.$router.push(route)
+      this.$router.push({ 'name': 'HomePage' })
     },
     toRest(route) {
       if (this.$route.name === route.name || this.$route.name === route) return
@@ -68,7 +68,7 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
-      this.toMain('/')
+      this.$router.push({ name: 'HomePage' })
     }
   }
 }

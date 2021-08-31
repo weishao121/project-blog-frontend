@@ -36,6 +36,11 @@ export default {
     const category = this.$store.state.route.path.split('/')[2]
     this.cateBlogs = (await BlogServices.listCate(category)).data
     if (this.cateBlogs.length !== 0) this.category = this.cateBlogs[0].mainTag
+  },
+  methods: {
+    to(route) {
+      this.$router.push(route)
+    }
   }
 }
 </script>
